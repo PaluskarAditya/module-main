@@ -343,7 +343,9 @@ const PhishingTraining = () => {
                       </div>
                       <div className='flex justify-between text-xs text-purple-400'>
                         <span>Investigated:</span>
-                        <span className='truncate ml-2'>{clickedElements.join(', ')}</span>
+                        <span className='truncate ml-2'>
+                          {[...new Set(clickedElements)].join(', ')}
+                        </span>
                       </div>
                     </div>
                   </div>

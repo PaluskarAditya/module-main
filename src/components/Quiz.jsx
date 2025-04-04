@@ -49,16 +49,16 @@ const Quiz = () => {
     }
 
     setFeedback(quizData[currentQuestion].aiResponse[index]);
+  };
 
-    setTimeout(() => {
-      if (currentQuestion < quizData.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
-        setSelectedOption(null);
-        setFeedback(null);
-      } else {
-        setQuizCompleted(true);
-      }
-    }, 1500);
+  const handleNextQuestion = () => {
+    if (currentQuestion < quizData.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedOption(null);
+      setFeedback(null);
+    } else {
+      setQuizCompleted(true);
+    }
   };
 
   const progressPercentage = ((currentQuestion + 1) / quizData.length) * 100;
@@ -135,6 +135,15 @@ const Quiz = () => {
                   </div>
                 )}
               </div>
+            )}
+
+            {selectedOption !== null && (
+              <button
+                onClick={handleNextQuestion}
+                className="mt-4 px-4 py-2 border border-emerald-500/30 text-emerald-400 text-xs rounded-lg hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-colors bg-black/70"
+              >
+                Next Question
+              </button>
             )}
           </div>
         ) : (

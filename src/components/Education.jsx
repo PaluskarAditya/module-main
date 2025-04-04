@@ -62,7 +62,7 @@ export default function Education() {
   ];
 
   return (
-    <div className='min-h-screen pt-[1rem] flex bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300'>
+    <div className='min-h-screen tracking-wide pt-[1rem] flex bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300'>
       {/* Sidebar */}
       <div 
         className={`${isNavOpen ? 'w-64' : 'w-20'} 
