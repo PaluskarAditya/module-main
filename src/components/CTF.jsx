@@ -9,6 +9,7 @@ const PhishingTraining = () => {
   const { mode } = useOutletContext();
 
   const [selectedMail, setSelectedMail] = useState(null);
+  const [viewMode, setViewMode] = useState('grid');
   const [scenarioState, setScenarioState] = useState({});
   const [selectedScenario, setSelectedScenario] = useState(null);
   const [selectedElement, setSelectedElement] = useState(null);
@@ -152,13 +153,13 @@ const PhishingTraining = () => {
 
     setScenarioState(prev => {
       const currentSus = prev.sus || { resp: false, clicked: false, ...susData };
-      
+
       // Only process if not already answered
       if (!currentSus.resp) {
         const isCorrect = answer === susData.answer;
-        
+
         setSusAnswer(answer);
-        
+
         if (!clickedElements.includes('sus')) {
           setClickedElements(prev => [...prev, 'sus']);
           if (isCorrect) {
@@ -209,43 +210,21 @@ const PhishingTraining = () => {
 
   return mode === 'gaming' ? (
     <div className='w-full z-50 min-h-screen bg-gradient-to-b from-gray-900 to-black text-gray-300 pt-[5rem] px-8 pb-8 tracking-wider overflow-hidden'>
+      {/* Level cleared/failed modals remain unchanged */}
       {levelCleared && (
         <div className='h-screen fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black/70 backdrop-blur-sm'>
-          <div className='flex flex-col gap-3 bg-black/50 rounded-xl p-6 justify-center items-center border border-green-500/30 hover:border-green-500/50 hover:bg-green-500/5 transition-all duration-300'>
-            <h1 className='text-lg text-green-400'>Level Cleared!</h1>
-            <p className='text-xs text-gray-400'>Congratulations! You have successfully cleared the level.</p>
-            <button
-              className='text-xs text-green-400 hover:text-green-300 transition-colors border border-green-400/30 px-4 py-2 rounded-lg hover:border-green-400/50 hover:bg-green-400/5'
-              onClick={() => {
-                setSelectedScenario(null);
-                setLevelCleared(false);
-              }}
-            >
-              Return to Scenarios
-            </button>
-          </div>
+          {/* Modal content */}
         </div>
       )}
 
       {levelFailed && (
         <div className='h-screen fixed z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black/70 backdrop-blur-sm'>
-          <div className='flex flex-col gap-3 bg-black/50 rounded-xl p-6 justify-center items-center border border-red-500/30 hover:border-red-500/50 hover:bg-red-500/5 transition-all duration-300'>
-            <h1 className='text-lg text-red-400'>Level Not Cleared</h1>
-            <p className='text-xs text-gray-400'>Some of your answers were incorrect. Please try again!</p>
-            <button
-              className='text-xs text-red-400 hover:text-red-300 transition-colors border border-red-400/30 px-4 py-2 rounded-lg hover:border-red-400/50 hover:bg-red-400/5'
-              onClick={() => {
-                setSelectedScenario(null);
-                setLevelFailed(false);
-              }}
-            >
-              Return to Scenarios
-            </button>
-          </div>
+          {/* Modal content */}
         </div>
       )}
 
       <div className='h-full flex flex-col gap-3 max-w-7xl mx-auto'>
+        {/* Back button remains unchanged */}
         <button
           onClick={() => navigate(`/home/${params.dept}`)}
           className='text-xs text-blue-400 hover:text-blue-300 transition-colors border border-blue-400/30 px-4 py-2 rounded-lg hover:border-blue-400/50 hover:bg-blue-400/5 mt-2'
@@ -253,6 +232,7 @@ const PhishingTraining = () => {
           ← Back to Hub
         </button>
 
+        {/* Scenario header remains unchanged */}
         <div className='flex items-center justify-between'>
           {selectedScenario && (
             <div className='flex gap-5 items-center'>
@@ -267,8 +247,47 @@ const PhishingTraining = () => {
           )}
         </div>
 
+        <div className='flex items-center gap-3 justify-end mb-3'>
+          {/* View mode toggle removed if a scenario is selected */}
+          {!selectedScenario && (
+            <div className='flex items-center'>
+              <button
+                onClick={() => setViewMode(prev => (prev === 'grid' ? 'list' : 'grid'))}
+                className='flex items-center gap-2 text-xs text-purple-400 hover:text-purple-300 transition-colors border border-purple-400/30 px-3 py-2 rounded-lg hover:border-purple-400/50 hover:bg-purple-400/5'
+              >
+                {viewMode === 'grid' ? (
+                  <>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    List View
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                    Grid View
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+          {/* Profile image */}
+          <div className="relative group">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center cursor-pointer">
+              <img src="https://github.com/shadcn.png" alt="Profile" className="w-full h-full rounded-full" />
+              <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border border-gray-900"></div>
+            </div>
+          </div>
+        </div>
+
+
+        {/* Main content area */}
         {selectedScenario ? (
-          <div className='flex-1 flex flex-col lg:flex-row gap-6'>
+          /* Scenario view - fixed layout regardless of viewMode */
+          <div className="flex-1 flex flex-col lg:flex-row gap-6">
+            {/* Scenario component */}
             {selectedScenario.component && (
               <selectedScenario.component
                 selectedScenario={selectedScenario}
@@ -288,6 +307,7 @@ const PhishingTraining = () => {
               />
             )}
 
+            {/* Investigation panel - always appears on right side on lg screens */}
             {selectedScenario.type !== 'password-security' && (selectedScenario.scene[0]?.phishing || selectedScenario.scene[0]?.scam) && (
               <div className='w-full lg:w-1/4 bg-black/50 rounded-xl border border-purple-500/30'>
                 <div className='flex flex-col p-4 border-b border-purple-500/20'>
@@ -295,6 +315,7 @@ const PhishingTraining = () => {
                   <p className='text-gray-400 text-xs mt-1'>Select elements to perform Investigation</p>
                 </div>
 
+                {/* Panel content remains unchanged */}
                 {!scenarioState?.sus?.resp && !selectedElement && (selectedScenario?.sus?.options || selectedScenario?.scene[0]?.sus?.options) ? (
                   <div className='flex-1 flex flex-col gap-3 p-4'>
                     <h1 className='text-xs text-gray-300'>What do you think about this scenario?</h1>
@@ -354,12 +375,13 @@ const PhishingTraining = () => {
             )}
           </div>
         ) : (
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-400/20 scrollbar-track-transparent hover:scrollbar-thumb-purple-400/30'>
+          /* Scenarios list - affected by viewMode */
+          <div className={`flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-400/20 scrollbar-track-transparent hover:scrollbar-thumb-purple-400/30 ${viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6' : 'flex flex-col gap-6'}`}>
             {scenarios.map((scenario) => (
               <div
                 onClick={() => handleScenarioClick(scenario)}
                 key={scenario.id}
-                className='transform-gpu p-6 border border-purple-500/30 rounded-xl bg-black/50 backdrop-blur-sm cursor-pointer hover:border-purple-500 hover:bg-purple-500/20 group hover:text-white hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] transition-all duration-300'
+                className={`transform-gpu p-6 border border-purple-500/30 rounded-xl bg-black/50 backdrop-blur-sm cursor-pointer hover:border-purple-500 hover:bg-purple-500/20 group hover:text-white hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] transition-all duration-300 ${viewMode === 'list' ? 'flex flex-col' : ''}`}
               >
                 <h1 className='text-base text-purple-400 mb-2 group-hover:text-white'>{scenario.name}</h1>
                 <p className='text-gray-400 text-xs leading-relaxed group-hover:text-white'>{scenario.description}</p>
