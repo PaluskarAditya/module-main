@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+# 🛡️ CyberGuard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Cybersecurity Education Platform** — Learn, Play, and Stay Safe Online.
 
-## Available Scripts
+CyberGuard is an **interactive React-based learning platform** designed to educate users on cybersecurity concepts through **real-world scenarios**, **quizzes**, and **gamified challenges**. Whether you're a student, a corporate employee, or just curious about cyber safety, CyberGuard makes learning fun, relevant, and impactful.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🎯 Project Objective
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To **bridge the gap between theory and real-world threats** by helping users:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Identify phishing and scam attempts
+- Understand common cyberattack vectors
+- Build secure browsing and communication habits
+- Train based on **role-specific risks** (HR, Finance, IT, etc.)
 
-### `npm test`
+> This project empowers users with the skills and instincts needed to **navigate the digital world safely**.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🔐 Key Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✅ **Phased Learning Journey**  
+Progressive modules categorized into:
+- `Beginner`
+- `Intermediate`
+- `Advanced`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+🕵️ **Scenario-Based Simulations**  
+Explore realistic security scenarios:
+- Email phishing
+- Malicious links
+- Suspicious phone calls
+- Fake login pages
+- Social engineering red flags
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🧪 **Interactive Quizzes & Feedback**  
+Test your awareness with instant, detailed explanations.
 
-### `npm run eject`
+🏆 **Gamified Experience**  
+Earn points, track your progress, and unlock levels.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+💼 **Role-Based Learning Paths**  
+Simulate attacks targeting your profession:  
+HR, Finance, IT, Executives, etc.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🎓 **Final Exam + Certificate (Coming Soon)**  
+Validate your knowledge and receive a certification.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🛠️ Tech Stack
 
-## Learn More
+| Tech            | Role                                |
+|-----------------|-------------------------------------|
+| **React**       | Frontend UI framework               |
+| **Tailwind CSS**| Fast, utility-first styling         |
+| **JavaScript**  | Game logic and user interactions    |
+| **CRA (Vite planned)** | Project bootstrapping        |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📁 Project Structure (Initial)
 
-### Code Splitting
+```bash
+module-main/
+├── public/                # Static files
+│   └── index.html
+├── src/                   # Source code
+│   ├── App.js
+│   ├── index.js
+│   └── [Upcoming] components/, levels/, data/, utils/
+├── README.md
+└── package.json
+````
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> ⚙️ Advanced features like levels, scoring, and difficulty will be integrated in the next phase.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🚀 Getting Started
 
-### Making a Progressive Web App
+To run the project locally:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+# Clone the repository
+git clone https://github.com/PaluskarAditya/module-main.git
+cd module-main
 
-### Advanced Configuration
+# Install dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Start the development server
+npm start
+```
 
-### Deployment
+Your app should now be running at:
+🌐 `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🔮 Roadmap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* [ ] Role-based scenario builder 🔧
+* [ ] Backend integration (score & user tracking) 🧠
+* [ ] Admin dashboard for content management 📊
+* [ ] Real-time leaderboard (WebSocket) 🏅
+* [ ] Authentication system with progress history 🔐
+* [ ] Final exam & certificate generation 🎓
+* [ ] Sound/voice-based threat simulations 🔊 (future)
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions of all kinds:
+
+* Add new levels or quiz scenarios
+* Improve UI/UX
+* Create new roles and modules
+* Fix bugs or suggest features
+
+### 👉 Steps to contribute:
+
+```bash
+# Fork the repo
+# Create your feature branch: git checkout -b feature/my-feature
+# Commit your changes: git commit -m 'Add my feature'
+# Push to the branch: git push origin feature/my-feature
+# Open a pull request 🚀
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+Use it, modify it, and share it freely for **educational and ethical** purposes.
+
+---
+
+## 👨‍💻 Author
+
+Made with 💙 by [Aditya Paluskar](https://github.com/PaluskarAditya)
+
+> *“Awareness is the first step in cybersecurity — this platform makes it the most engaging one too.”*
+
+
